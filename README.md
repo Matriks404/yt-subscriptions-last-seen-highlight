@@ -13,6 +13,14 @@ On the first YouTube subscriptions list visit, this userscript will remember the
 
 Userscript remembers by default 10 newest videos (from previous visit), so even if some were deleted it shouldn't matter for user experience, as the newest available video will be highlighted.
 
+## Screenshots
+
+<p float="center">
+  <img alt="Desktop UI" src="/screenshots/desktop.png" height="180px">
+  <img alt="Mobile tablet UI" src="/screenshots/mobile-1.png" height="180px">
+  <img alt="Mobile smartphone UI" src="/screenshots/mobile-2.png" height="200px">
+</p>
+
 ## Advanced tweaking
 
 Inside the userscript source file there are few variables that you can change to affect the behaviour of the script.
