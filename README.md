@@ -13,6 +13,18 @@ On the first YouTube subscriptions list visit, this userscript will remember the
 
 Userscript remembers by default 10 newest videos (from previous visit), so even if some were deleted it shouldn't matter for user experience, as the newest available video will be highlighted.
 
+## Advanced tweaking
+
+Inside the userscript source file there are few variables that you can change to affect the behaviour of the script.
+
+They are below `// === VARIABLES ===` comment near the top of the source code, and they are:
+
+* `time_in_ms_before_load` (*1500* by default) - The time in miliseconds before the userscript will execute its functions to load and save last seen videos.
+* `display_debug_messages` (*false* by default) - Whether or not display debug messages that helps debug the script.
+* `video_amount_to_save` (*10* by default) - Amount of videos from subscriptions list to save to internal list, the script will try later to highlight the newest available video from that list, this number shouldn't be too low, and making it much bigger than default setting shouldn't affect performance noticeably. 
+* `do_not_allow_live_videos` - (*true* by default) Whether or not allow to save live feeds to the internal list of newest videos that can be highlighted.
+* `highlight_style` - The CSS style of highlighted video.
+
 ## Known major issues
 
 If you use YouTube's dark theme, the default style of highlighted video will not be easy on your eyes and it will be hard to read.
