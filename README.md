@@ -15,7 +15,7 @@ Userscript remembers by default 10 newest videos (from previous visit), so even 
 
 ## Known major issues
 
-If you use YouTube's dark theme, the default style of highlighted video will not be easy on your eyes and it will be hard to read (see issue #4).
+If you use YouTube's dark theme, the default style of highlighted video will not be easy on your eyes and it will be hard to read.
 
 ## Contributing
 
