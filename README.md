@@ -31,7 +31,8 @@ They are below `// === VARIABLES ===` comment near the top of the source code, a
 * `display_debug_messages` (*false* by default) - Whether or not display debug messages that helps debug the script.
 * `video_amount_to_save` (*10* by default) - Amount of videos from subscriptions list to save to internal list, the script will try later to highlight the newest available video from that list, this number shouldn't be too low, and making it much bigger than default setting shouldn't affect performance noticeably.
 * `allow_live_videos` - (*false* by default) Whether or not allow to save live feeds to the internal list of newest videos that can be highlighted.
-* `highlight_style` - The CSS style of highlighted video.
+* `light_theme_style` - The CSS style of highlighted video for YouTube light theme.
+* `dark_theme_style` - The CSS style of highlighted video for YouTube dark theme.
 
 ## Contributing
 
