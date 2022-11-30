@@ -3,7 +3,7 @@ This is a userscript that makes the last seen video on your subscription list on
 
 It have been tested and it's reported to be working on latest versions of **Google Chrome** and **Firefox Developer Edition**.
 
-# Features
+## Features
 
 * It supports both mobile and desktop website UI's.
 * It also supports light and dark YouTube themes.
