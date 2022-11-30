@@ -17,25 +17,51 @@
     var time_in_ms_before_load = 1500; // 1.5 seconds, you can lower it if your computer/internet connection can load YouTube fast enough.
     var display_debug_messages = false;
     var video_amount_to_save = 5;
-    var do_not_allow_live_videos = true;
+    var allow_live_videos = false;
 
-    // Your desired style of highlighted video.
-    var highlight_style = `
+    // Your desired style of highlighted video for both light and dark themes.
+    var light_theme_style = `
 background-color: yellow;
-outline: 2px solid hotpink;
+outline: 2px solid #c4c400;
+    `;
+
+    var dark_theme_style = `
+background-color: blue;
+outline: 2px solid #00009d;
     `;
 
 
 
     var device;
     var css_video_thumbnail_selector;
+    var is_dark_theme;
 
-    if (location.href.includes('www.youtube.com')) {
-        device = 'Desktop';
-        css_video_thumbnail_selector = '#thumbnail.yt-simple-endpoint';
-    } else if (location.href.includes('m.youtube.com')) {
-        device = 'Mobile';
-        css_video_thumbnail_selector = '.media-item-thumbnail-container';
+    function loadDeviceSettings() {
+        // Check whether we are on desktop or mobile website.
+        if (location.href.includes('www.youtube.com')) {
+            device = 'Desktop';
+            css_video_thumbnail_selector = '#thumbnail.yt-simple-endpoint';
+        } else if (location.href.includes('m.youtube.com')) {
+            device = 'Mobile';
+            css_video_thumbnail_selector = '.media-item-thumbnail-container';
+        }
+
+        // Check wether we are on dark or light theme.
+        if (device == 'Desktop') {
+            var documentElement = document.querySelector('html');
+
+            is_dark_theme = documentElement.hasAttribute('dark');
+        } else if (device == 'Mobile') {
+            var metaThemeElement = document.querySelector('meta[id="theme-meta"]');
+
+            var themeColor = metaThemeElement.getAttribute('content');
+
+            if (themeColor == 'rgb(15, 15, 15)') {
+                is_dark_theme = true;
+            } else {
+                is_dark_theme = false;
+            }
+        }
     }
 
     async function markLast() {
@@ -72,7 +98,11 @@ outline: 2px solid hotpink;
             //console.log(grandparent_element);
             //}
 
-            grandparent_element.style = highlight_style;
+            if (is_dark_theme) {
+                grandparent_element.style = dark_theme_style;
+            } else {
+                grandparent_element.style = light_theme_style;
+            }
 
             break;
         }
@@ -97,7 +127,7 @@ outline: 2px solid hotpink;
                 continue;
             }
 
-            if (do_not_allow_live_videos) {
+            if (!allow_live_videos) {
                 if (device == 'Desktop') {
                     let grandparent_element = videos[i].parentElement.parentElement;
                     let video_badge = grandparent_element.querySelector('.badge-style-type-live-now-alternate');
@@ -140,6 +170,7 @@ outline: 2px solid hotpink;
     }
 
     function load() {
+        loadDeviceSettings();
         markLast();
         saveNew();
     }
